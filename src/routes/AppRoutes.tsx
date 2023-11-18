@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import * as React from 'react';
-import Clientes from "../pages/Clientes";
-import Productos from "../pages/Productos";
-import Empleados from "../pages/Empleados";
+import ClientesPage from "../pages/ClientesPage";
+import ProductosPage from "../pages/ProductosPage";
+import EmpleadosPage from "../pages/EmpleadosPage";
 import HomePage from "../pages/HomePage";
 
-import Register from "../pages/Register/Register";
+import RegisterPage from "../pages/RegisterPage";
 import LoginPage from "../pages/LoginPage";
 //import PrivateRoute from "./PrivateRoute";
 
@@ -17,14 +17,14 @@ const AppRoutes: React.FC = () => {
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/productos" element={<Productos />} />
-        <Route path="/clientes" element={<Clientes />} />
-        <Route path="/empleados" element={<Empleados />}/>
+        <Route path="/productos" element={<ProductosPage />} />
+        <Route path="/clientes" element={<ClientesPage />} />
+        <Route path="/empleados" element={<EmpleadosPage />}/>
         <Route path="/admin" element={<Admin />} />
 
         <Route path="/login" element={<LoginPage />} />
 
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
       
       

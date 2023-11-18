@@ -29,7 +29,7 @@ const EmpleadoModal = ({ show, onHide, title, modalType, emp, refreshData }: Emp
             onHide();
             refreshData(prevState => !prevState);
         } catch (error) {
-            console.error(error);
+            //console.error(error);
             toast.error('Se ha producido un error');
         }
     };
@@ -40,18 +40,18 @@ const EmpleadoModal = ({ show, onHide, title, modalType, emp, refreshData }: Emp
             onHide();
             refreshData(prevState => !prevState);
         } catch (error) {
-            console.error(error);
+            //console.error(error);
             toast.error('Se ha producido un error');
         }
     };
     const validationSchema = () => {
         return Yup.object().shape({
-            id: Yup.number().integer().min(0),
+            //id: Yup.number().integer().min(0),
             nombre: Yup.string().required('Por favor ingrese el nombre'),
             apellido: Yup.string().required('Por favor ingrese el apellido'),
             telefono: Yup.string().required('Por favor ingrese un telefono'),
             email: Yup.string().required('Por favor ingrese el email'),
-            usuario: Yup.string().required('Por favor ingrese el usuario'),
+            //usuario: Yup.string().required('Por favor ingrese el usuario'),
         });
     };
     const formik = useFormik({

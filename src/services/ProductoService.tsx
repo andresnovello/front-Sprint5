@@ -1,25 +1,17 @@
-import Cliente from "../types/Cliente";
 
+import Producto from "../types/Producto";
 
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = 'http://localhost:8080/';
 
-const ClienteService = {
-    
-    /*
-    getClientes: async (): Promise<Cliente[]> => {
-        const response = await fetch(`${BASE_URL}/api/v1/clientes/all`);
-        const data = await response.json();
-        return data;
-    },
-    */
+export const ProductService = {
 
-    getClientes: async (): Promise<Cliente[]> => {
+    getProductos: async (): Promise<Producto[]> => {
 
         try {
             // Recuperar el token del localStorage
             const token = localStorage.getItem('token');
     
-            const response = await fetch(`${BASE_URL}/api/v1/clientes`, {
+            const response = await fetch(`${BASE_URL}/api/v1/productos`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -41,21 +33,14 @@ const ClienteService = {
         }
     },
 
-    /*
-    getCliente: async (id: number): Promise<Cliente> => {
-        const response = await fetch(`${BASE_URL}/api/v1/clientes/${id}`);
-        const data = await response.json();
-        return data;
-    },
-    */
 
-    getCliente: async (id: number): Promise<Cliente[]> => {
+    getProducto: async (id: number): Promise<Producto[]> => {
 
         try {
             // Recuperar el token del localStorage
             const token = localStorage.getItem('token');
     
-            const response = await fetch(`${BASE_URL}/api/v1/clientes/${id}`, {
+            const response = await fetch(`${BASE_URL}/api/v1/productos/${id}`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -78,104 +63,74 @@ const ClienteService = {
     },
 
 
-    /*
-    createCliente: async (cliente: Cliente): Promise<Cliente> => {
-        const response = await fetch(`${BASE_URL}/api/v1/clientes`, {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(cliente)
-        });
-        const data = await response.json();
-        return data;
-    },
-    */
-
-    createCliente: async (cliente: Cliente): Promise<Cliente[]> => {
+    createProducto: async (producto: Producto): Promise<Producto[]> => {
 
         try {
             // Recuperar el token del localStorage
             const token = localStorage.getItem('token');
     
-            const response = await fetch(`${BASE_URL}/api/v1/clientes`, {
+            const response = await fetch(`${BASE_URL}/api/v1/productos`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
-                body: JSON.stringify(cliente)
+                body: JSON.stringify(producto)
             });
     
             if (!response.ok) {
-                throw new Error('Error al crear cliente');
+                throw new Error('Error al crear producto');
             }
     
             const data = await response.json();
-            console.log('Cliente creado:', data);
+            console.log('Producto creado:', data);
     
             return data;
     
         } catch (error) {
-            console.error('Error al crear cliente');
+            console.error('Error al crear producto');
             throw error;
         }
     },
 
-    /*
-    updateCliente: async (id: number, cliente: Cliente): Promise<Cliente> => {
-        const response = await fetch(`${BASE_URL}/api/v1/clientes/${id}`, {
-            method: "PUT",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(cliente)
-        });
-        const data = await response.json();
-        return data;
-    },
-    */
 
-    updateCliente: async (id: number, cliente: Cliente): Promise<Cliente[]> => {
+    updateProducto: async (id: number, producto: Producto): Promise<Producto[]> => {
 
         try {
             // Recuperar el token del localStorage
             const token = localStorage.getItem('token');
     
-            const response = await fetch(`${BASE_URL}/api/v1/clientes/${id}`, {
+            const response = await fetch(`${BASE_URL}/api/v1/productos/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                 },
-                body: JSON.stringify(cliente)
+                body: JSON.stringify(producto)
             });
     
             if (!response.ok) {
-                throw new Error('Error al modificar cliente');
+                throw new Error('Error al modificar producto');
             }
     
             const data = await response.json();
-            console.log('Cliente modificado:', data);
+            console.log('Producto modificado:', data);
     
             return data;
     
         } catch (error) {
             
-            console.log('Error al modificar cliente');
+            console.log('Error al modificar producto');
             throw error;
         }
     },
 
-    /*
-    deleteCliente: async (id: number): Promise<void> => {
-        await fetch(`${BASE_URL}/api/v1/clientes/${id}`, {
-            method: "DELETE"
-        });
-    }
-    */
 
-    deleteCliente: async (id: number): Promise<void> => {
+    deleteProducto: async (id: number): Promise<void> => {
 
         try {
             // Recuperar el token del localStorage
             const token = localStorage.getItem('token');
     
-            const response = await fetch(`${BASE_URL}/api/v1/clientes/${id}`, {
+            const response = await fetch(`${BASE_URL}/api/v1/productos/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -186,27 +141,25 @@ const ClienteService = {
 
 
             if (response.status === 204) {
-                console.log('Cliente eliminado correctamente');
+                console.log('Producto eliminado correctamente');
                 //return;
             } else {
                 const data = await response.json();
-                console.log('Cliente eliminado:', data);
+                console.log('Producto eliminado:', data);
             }
 
 
             if (!response.ok) {
-                throw new Error('Error al eliminar cliente');
+                throw new Error('Error al eliminar producto');
             }
         
         
 
 
         } catch (error) {
-            console.log('Error al eliminar cliente', error);
+            console.log('Error al eliminar producto', error);
             throw error;
         }
     }
 
-}
-
-export default ClienteService;
+};

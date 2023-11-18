@@ -1,11 +1,11 @@
 import EmpleadosTable from "../components/EmpleadosTable/EmpleadosTable";
 
 
-const Empleados = () => {
+const EmpleadosPage = () => {
     return (
         <>
             <EmpleadosTable />
         </>
     )
 }
-export default Empleados;
+export default EmpleadosPage;

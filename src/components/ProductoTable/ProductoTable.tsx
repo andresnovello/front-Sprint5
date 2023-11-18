@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Producto } from "../../types/Producto";
-import { ProductService } from "../../services/ProductService";
+import { ProductService } from "../../services/ProductoService";
 import Loader from "../Loader/Loader";
 import { Button, Table } from "react-bootstrap";
 import { ModalType } from "../../types/ModalType/ModalType";
-import ProductModal from "../ProductModal/ProductModal";
+import ProductModal from "../ProductoModal/ProductoModal";
 import { DeleteButton } from "../DeleteButton/DeleteButton";
 import { EditButton } from "../EditButton/EditButton";
 
@@ -25,7 +25,7 @@ const ProductTable = () => {
 
         //Llamamos a la funcion para obtener todos los productos declarado en el service
         const fetchProducts = async () => { 
-            const products = await ProductService.getProducts();
+            const products = await ProductService.getProductos();
             setProducts(products);
             setIsLoading(false);
         };

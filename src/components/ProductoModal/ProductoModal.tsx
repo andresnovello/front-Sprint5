@@ -4,7 +4,7 @@ import { Producto } from "../../types/Producto";
 //dependencias para validar formularios
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { ProductService } from "../../services/ProductService";
+import { ProductService } from "../../services/ProductoService";
 //notificaciones
 import { toast } from 'react-toastify';
 
@@ -26,10 +26,10 @@ const ProductModal = ({ show, onHide, title, prod, modalType, refreshData }: Pro
         try {
             const isNew = pro.id === 0;
             if (isNew) {
-                await ProductService.createProduct(pro);
+                await ProductService.createProducto(pro);
 
             } else {
-                await ProductService.updateProduct(pro.id, pro);
+                await ProductService.updateProducto(pro.id, pro);
             }
             toast.success(isNew ? "Producto Creado" : "Producto Actualizado", {
                 position: "top-center",
@@ -45,7 +45,7 @@ const ProductModal = ({ show, onHide, title, prod, modalType, refreshData }: Pro
     //DELETE
     const handleDelete = async () => {
         try {
-            await ProductService.deleteProduct(prod.id);
+            await ProductService.deleteProducto(prod.id);
             toast.success("Producto Borrado", {
                 position: "top-center",
             });
@@ -62,7 +62,7 @@ const ProductModal = ({ show, onHide, title, prod, modalType, refreshData }: Pro
     //Yup
     const validationSchema = () => {
         return Yup.object().shape({
-            id: Yup.number().integer().min(0),
+            //id: Yup.number().integer().min(0),
             denominacion: Yup.string().required('El titulo es requerido'),
             descripcion: Yup.string().required('La descripcion es requerida'),
             tiempoEstimadoCocina: Yup.number().min(0).required('El tiempo de cocina es requerido'),

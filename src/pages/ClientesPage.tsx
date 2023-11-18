@@ -1,11 +1,11 @@
 import TablaClientes from "../components/ClientesTable/ClientesTable";
 
 
-const Clientes = () => {
+const ClientesPage = () => {
     return (
         <>
             <TablaClientes />
         </>
     )
 }
-export default Clientes;
+export default ClientesPage;

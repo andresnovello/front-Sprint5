@@ -1,11 +1,11 @@
-import { Login } from "../types/Login";
+import { LoginRequest } from "../types/LoginRequest";
 import RegisterRequest from "../types/RegisterRequest";
 
 const BASE_URL = 'http://localhost:8080';
 
 export const AuthService = {
   
-  login: async (login: Login): Promise<string> => {
+  login: async (login: LoginRequest): Promise<string> => {
 
     try {
       const response = await fetch(`${BASE_URL}/auth/login`, {
